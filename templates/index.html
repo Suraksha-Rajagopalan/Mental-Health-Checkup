@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crop Prediction Model</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="login">
+      <h1>Mental Heath Check</h1>
+      <form action="{{ url_for('predict')}}" method="post">
+        <!-- Age -->
+        <div class="form-group">
+          <label>What is your Age?</label>
+          <input
+            type="text"
+            name="Age"
+            placeholder="Enter your age"
+            required="required"
+          />
+        </div>
+
+        <!-- City -->
+        <div class="form-group">
+          <label>Your City?</label>
+          <input
+            type="text"
+            name="City"
+            placeholder="Name"
+            required="required"
+          />
+        </div>
+
+        <!-- Working Professional or Student -->
+        <div class="form-group">
+          <label>Are you a Working Professional or a Student?</label>
+          <div class="radio-group">
+            <input
+              type="radio"
+              id="working_professional"
+              name="Work/Student"
+              value="Working Professional"
+              required
+            />
+            <label for="working_professional">Working Professional</label>
+            <input
+              type="radio"
+              id="student"
+              name="Work/Student"
+              value="Student"
+              required
+            />
+            <label for="student">Student</label>
+          </div>
+        </div>
+
+        <!-- Profession -->
+        <div class="form-group">
+          <label>What is your profession?</label>
+          <div class="radio-group">
+            <input
+              type="radio"
+              id="teacher"
+              name="Profession"
+              value="Teacher"
+            />
+            <label for="teacher">Teacher</label>
+            <input type="radio" id="chef" name="Profession" value="Chef" />
+            <label for="chef">Chef</label>
+            <input
+              type="radio"
+              id="analyst"
+              name="Profession"
+              value="Business Analyst"
+            />
+            <label for="analyst">Business Analyst</label>
+            <input type="radio" id="other" name="Profession" value="Other" />
+            <label for="other">Other</label>
+          </div>
+        </div>
+
+        <!-- Academic Pressure -->
+        <div class="form-group">
+          <label>Do you feel academic pressure?</label>
+          <input
+            type="text"
+            name="Academic Pressure"
+            placeholder="Rate from 1-5"
+            required="required"
+          />
+        </div>
+
+        <!-- Work Pressure -->
+        <div class="form-group">
+          <label>Do you feel work pressure?</label>
+          <input
+            type="text"
+            name="Work Pressure"
+            placeholder="Rate from 1-5"
+            required="required"
+          />
+        </div>
+
+        <!-- CGPA -->
+        <div class="form-group">
+          <label>Your Current CGPA?</label>
+          <input
+            type="text"
+            name="CGPA"
+            placeholder="In the scale of 10"
+            required="required"
+          />
+        </div>
+
+        <!-- Study Satisfaction -->
+        <div class="form-group">
+          <label>How satisfied are you with your study?</label>
+          <input
+            type="text"
+            name="Study Satisfaction"
+            placeholder="Rate from 1-5"
+            required="required"
+          />
+        </div>
+
+        <!-- Job Satisfaction -->
+        <div class="form-group">
+          <label>How satisfied are you with your job?</label>
+          <input
+            type="text"
+            name="Job Satisfaction"
+            placeholder="Rate from 1-5"
+            required="required"
+          />
+        </div>
+
+        <!-- Sleep Duration -->
+        <div class="form-group">
+          <label>How many hours do you sleep daily?</label>
+          <input
+            type="text"
+            name="Sleep Duration"
+            placeholder="Enter hours"
+            required="required"
+          />
+        </div>
+
+        <!-- Dietary Habits -->
+        <div class="form-group">
+            <label>What are your dietary habits?</label>
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="healthy"
+                name="Dietary Habits"
+                value="Healthy"
+                required
+              />
+              <label for="healthy">Healthy</label>
+              <input
+                type="radio"
+                id="unhealthy"
+                name="Dietary Habits"
+                value="Unhealthy"
+                required
+              />
+              <label for="unhealthy">Unhealthy</label>
+              <input
+                type="radio"
+                id="moderate"
+                name="Dietary Habits"
+                value="Moderate"
+                required
+              />
+              <label for="moderate">Moderate</label>
+            </div>
+          </div>
+
+          <!--  Degree -->
+        <div class="form-group">
+            <label>What is your degree?</label>
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="LLB"
+                name="Degree"
+                value="LLB"
+                required
+              />
+              <label for="LLB">LLB</label>
+              <input
+                type="radio"
+                id="BHM"
+                name="Degree"
+                value="BHM"
+                required
+              />
+              <label for="BHM">BHM</label>
+              <input
+                type="radio"
+                id="BBA"
+                name="Degree"
+                value="BBA"
+                required
+              />
+              <label for="BBA">BBA</label>
+              <input
+                type="radio"
+                id="B.Pharm"
+                name="Degree"
+                value="B.Pharm"
+                required
+              />
+              <label for="B.Pharm">B.Pharm</label>
+              <input
+                type="radio"
+                id="MD"
+                name="Degree"
+                value="MD"
+                required
+              />
+              <label for="MD">MD</label>
+              <input
+                type="radio"
+                id="MCA"
+                name="Degree"
+                value="MCA"
+                required
+              />
+              <label for="MCA">MCA</label>
+              <input
+                type="radio"
+                id="BSc"
+                name="Degree"
+                value="BSc"
+                required
+              />
+              <label for="BSC">BSC</label>
+              <input
+                type="radio"
+                id="BE"
+                name="Degree"
+                value="BE"
+                required
+              />
+              <label for="BE">BE</label>
+              <input
+                type="radio"
+                id="ME"
+                name="Degree"
+                value="ME"
+                required
+              />
+              <label for="ME">ME</label>
+            </div>
+          </div>
+
+        <!-- Suicidal Thoughts -->
+        <div class="form-group">
+          <label>Have you ever had suicidal thoughts?</label>
+          <div class="radio-group">
+            <input
+              type="radio"
+              id="suicidal_yes"
+              name="Suicidal Thoughts"
+              value="Yes"
+              required
+            />
+            <label for="suicidal_yes">Yes</label>
+            <input
+              type="radio"
+              id="suicidal_no"
+              name="Suicidal Thoughts"
+              value="No"
+              required
+            />
+            <label for="suicidal_no">No</label>
+          </div>
+        </div>
+
+        <!-- Work/Study Hours -->
+        <div class="form-group">
+          <label>How many hours do you work or study daily?</label>
+          <input
+            type="text"
+            name="Work/Study Hours"
+            placeholder="Enter hours"
+            required="required"
+          />
+        </div>
+
+        <!-- Financial Stress -->
+        <div class="form-group">
+          <label>Do you experience financial stress?</label>
+          <input
+            type="text"
+            name="Financial Stress"
+            placeholder="rate from 1-5"
+            required="required"
+          />
+        </div>
+
+        <!-- Family History -->
+        <div class="form-group">
+            <label>Family History of Mental Illness</label>
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="suicidal_yes"
+                name="Family"
+                value="Yes"
+                required
+              />
+              <label for="suicidal_yes">Yes</label>
+              <input
+                type="radio"
+                id="suicidal_no"
+                name="Family"
+                value="No"
+                required
+              />
+              <label for="suicidal_no">No</label>
+            </div>
+          </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Predict
+        </button>
+      </form>
+
+      <h1 id="predi">{{ prediction_text }}</h1>
+    </div>
+  </body>
+</html>
