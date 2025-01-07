@@ -1,0 +1,95 @@
+/* General Body Styling */
+body {
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/* Centered Form Container with White Background */
+.login {
+    background: white;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+}
+
+/* Form Title Styling */
+h1 {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Form Group Styling (Question + Answer) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Question Styling */
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+/* Answer Field Styling (Text Input) */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Answer Field Styling (Radio Buttons) */
+.form-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Group radio buttons inline */
+.form-group .radio-group {
+    margin-top: 5px;
+}
+
+.form-group .radio-group label {
+    font-weight: normal;
+    display: inline;
+    margin-right: 15px;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Prediction Text Styling */
+#predi {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
