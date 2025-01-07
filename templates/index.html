@@ -1,37 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Crop Prediction Model</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Pacifico"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Arimo"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Hind:300"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-  </head>
+{% extends 'app.html' %} {% block content %}
+<style>
+  .header-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 
-  <body>
+  .header-buttons a {
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+  }
+
+  .header-buttons a:hover {
+    background-color: #0056b3;
+  }
+
+  .header-buttons a:first-child {
+    background-color: #28a745;
+  }
+
+  .header-buttons a:first-child:hover {
+    background-color: #218838;
+  }
+</style>
+<div class="header-buttons">
+  <a href="{{ url_for('login') }}">Login</a>
+  <a href="{{ url_for('register') }}">Register</a>
+</div>
+
+<div class="login">
+  <h1>Mental Health Check</h1>
+  <form action="{{ url_for('predict') }}" method="post">
     <div class="login">
-      <h1>Mental Heath Check</h1>
       <form action="{{ url_for('predict')}}" method="post">
         <!-- Age -->
         <div class="form-group">
@@ -171,113 +178,65 @@
 
         <!-- Dietary Habits -->
         <div class="form-group">
-            <label>What are your dietary habits?</label>
-            <div class="radio-group">
-              <input
-                type="radio"
-                id="healthy"
-                name="Dietary Habits"
-                value="Healthy"
-                required
-              />
-              <label for="healthy">Healthy</label>
-              <input
-                type="radio"
-                id="unhealthy"
-                name="Dietary Habits"
-                value="Unhealthy"
-                required
-              />
-              <label for="unhealthy">Unhealthy</label>
-              <input
-                type="radio"
-                id="moderate"
-                name="Dietary Habits"
-                value="Moderate"
-                required
-              />
-              <label for="moderate">Moderate</label>
-            </div>
+          <label>What are your dietary habits?</label>
+          <div class="radio-group">
+            <input
+              type="radio"
+              id="healthy"
+              name="Dietary Habits"
+              value="Healthy"
+              required
+            />
+            <label for="healthy">Healthy</label>
+            <input
+              type="radio"
+              id="unhealthy"
+              name="Dietary Habits"
+              value="Unhealthy"
+              required
+            />
+            <label for="unhealthy">Unhealthy</label>
+            <input
+              type="radio"
+              id="moderate"
+              name="Dietary Habits"
+              value="Moderate"
+              required
+            />
+            <label for="moderate">Moderate</label>
           </div>
+        </div>
 
-          <!--  Degree -->
+        <!--  Degree -->
         <div class="form-group">
-            <label>What is your degree?</label>
-            <div class="radio-group">
-              <input
-                type="radio"
-                id="LLB"
-                name="Degree"
-                value="LLB"
-                required
-              />
-              <label for="LLB">LLB</label>
-              <input
-                type="radio"
-                id="BHM"
-                name="Degree"
-                value="BHM"
-                required
-              />
-              <label for="BHM">BHM</label>
-              <input
-                type="radio"
-                id="BBA"
-                name="Degree"
-                value="BBA"
-                required
-              />
-              <label for="BBA">BBA</label>
-              <input
-                type="radio"
-                id="B.Pharm"
-                name="Degree"
-                value="B.Pharm"
-                required
-              />
-              <label for="B.Pharm">B.Pharm</label>
-              <input
-                type="radio"
-                id="MD"
-                name="Degree"
-                value="MD"
-                required
-              />
-              <label for="MD">MD</label>
-              <input
-                type="radio"
-                id="MCA"
-                name="Degree"
-                value="MCA"
-                required
-              />
-              <label for="MCA">MCA</label>
-              <input
-                type="radio"
-                id="BSc"
-                name="Degree"
-                value="BSc"
-                required
-              />
-              <label for="BSC">BSC</label>
-              <input
-                type="radio"
-                id="BE"
-                name="Degree"
-                value="BE"
-                required
-              />
-              <label for="BE">BE</label>
-              <input
-                type="radio"
-                id="ME"
-                name="Degree"
-                value="ME"
-                required
-              />
-              <label for="ME">ME</label>
-            </div>
+          <label>What is your degree?</label>
+          <div class="radio-group">
+            <input type="radio" id="LLB" name="Degree" value="LLB" required />
+            <label for="LLB">LLB</label>
+            <input type="radio" id="BHM" name="Degree" value="BHM" required />
+            <label for="BHM">BHM</label>
+            <input type="radio" id="BBA" name="Degree" value="BBA" required />
+            <label for="BBA">BBA</label>
+            <input
+              type="radio"
+              id="B.Pharm"
+              name="Degree"
+              value="B.Pharm"
+              required
+            />
+            <label for="B.Pharm">B.Pharm</label>
+            <input type="radio" id="MD" name="Degree" value="MD" required />
+            <label for="MD">MD</label>
+            <input type="radio" id="MCA" name="Degree" value="MCA" required />
+            <label for="MCA">MCA</label>
+            <input type="radio" id="BSc" name="Degree" value="BSc" required />
+            <label for="BSC">BSC</label>
+            <input type="radio" id="BE" name="Degree" value="BE" required />
+            <label for="BE">BE</label>
+            <input type="radio" id="ME" name="Degree" value="ME" required />
+            <label for="ME">ME</label>
           </div>
+        </div>
 
         <!-- Suicidal Thoughts -->
         <div class="form-group">
@@ -326,26 +285,26 @@
 
         <!-- Family History -->
         <div class="form-group">
-            <label>Family History of Mental Illness</label>
-            <div class="radio-group">
-              <input
-                type="radio"
-                id="suicidal_yes"
-                name="Family"
-                value="Yes"
-                required
-              />
-              <label for="suicidal_yes">Yes</label>
-              <input
-                type="radio"
-                id="suicidal_no"
-                name="Family"
-                value="No"
-                required
-              />
-              <label for="suicidal_no">No</label>
-            </div>
+          <label>Family History of Mental Illness</label>
+          <div class="radio-group">
+            <input
+              type="radio"
+              id="suicidal_yes"
+              name="Family"
+              value="Yes"
+              required
+            />
+            <label for="suicidal_yes">Yes</label>
+            <input
+              type="radio"
+              id="suicidal_no"
+              name="Family"
+              value="No"
+              required
+            />
+            <label for="suicidal_no">No</label>
           </div>
+        </div>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">
           Predict
@@ -354,5 +313,7 @@
 
       <h1 id="predi">{{ prediction_text }}</h1>
     </div>
-  </body>
-</html>
+
+    {% endblock %}
+  </form>
+</div>
