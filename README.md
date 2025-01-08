@@ -1,4 +1,4 @@
-# Mental Health Checkup
+# Mind Lens
 
 ## A Check up site to check a person is Depressed or not
 
